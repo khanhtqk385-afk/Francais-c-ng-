@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b72">
+<meta name="description" content="Français Plus - Nền tảng học tiếng Pháp từ A1 đến B2.">
+<title>Français Plus | Học tiếng Pháp A1–B2</title>
+
+<style>
+:root {
+  --navy:#173b72;
+  --blue:#2864b4;
+  --pale:#eef4fc;
+  --ink:#1e293b;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --white:#fff;
+  --green:#16845b;
+  --red:#c24141;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:#f5f7fb;
+  color:var(--ink);
+  font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+
+button,input,select,textarea {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+.top {
+  background:var(--navy);
+  color:white;
+  padding:13px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:5;
+  box-shadow:0 3px 12px #102c5530;
+}
+
+.brand {
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:.2px;
+}
+
+.brand small {
+  display:block;
+  font-size:10px;
+  letter-spacing:2px;
+  opacity:.8;
+  font-weight:500;
+}
+
+.topright {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.pill {
+  border:1px solid #ffffff55;
+  border-radius:30px;
+  padding:6px 11px;
+  font-size:12px;
+}
+
+.layout {
+  display:grid;
+  grid-template-columns:235px 1fr;
+  max-width:1400px;
+  margin:auto;
+  min-height:calc(100vh - 60px);
+}
+
+aside {
+  background:white;
+  border-right:1px solid var(--line);
+  padding:20px 13px;
+}
+
+.navtitle {
+  font-size:11px;
+  color:#94a3b8;
+  font-weight:800;
+  letter-spacing:1.2px;
+  margin:15px 10px 7px;
+}
+
+.navbtn {
+  display:flex;
+  width:100%;
+  gap:11px;
+  align-items:center;
+  text-align:left;
+  padding:11px 12px;
+  border:0;
+  background:transparent;
+  color:#475569;
+  border-radius:10px;
+  margin:3px 0;
+}
+
+.navbtn.active,
+.navbtn:hover {
+  background:var(--pale);
+  color:var(--blue);
+  font-weight:700;
+}
+
+.main {
+  padding:25px;
+  min-width:0;
+}
+
+.welcome {
+  background:linear-gradient(120deg,#173b72,#347bc8);
+  color:white;
+  border-radius:18px;
+  padding:25px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+}
+
+.welcome h1 {
+  margin:0 0 6px;
+  font-size:26px;
+}
+
+.welcome p {
+  margin:0;
+  opacity:.9;
+}
+
+.welcome .flag {
+  font-size:45px;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+  margin:17px 0;
+}
+
+.stat,
+.panel,
+.course,
+.lessoncard {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
+}
+
+.stat b {
+  display:block;
+  font-size:24px;
+  color:var(--navy);
+}
+
+.stat span {
+  font-size:12px;
+  color:var(--muted);
+}
+
+h2 {
+  font-size:20px;
+  margin:24px 0 12px;
+}
+
+h3 {
+  margin:0 0 7px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+}
+
+.levels {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.level {
+  border:1px solid var(--line);
+  background:white;
+  border-radius:14px;
+  padding:16px;
+  text-align:left;
+}
+
+.level strong {
+  font-size:25px;
+  color:var(--blue);
+  display:block;
+}
+
+.level small {
+  color:var(--muted);
+}
+
+.progress {
+  height:8px;
+  background:#e8edf5;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.progress i {
+  display:block;
+  height:100%;
+  background:#2b8a68;
+  border-radius:20px;
+}
+
+.muted {
+  color:var(--muted);
+}
+
+.tag {
+  display:inline-block;
+  background:var(--pale);
+  color:var(--blue);
+  padding:3px 8px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.btn {
+  border:0;
+  background:var(--blue);
+  color:white;
+  padding:10px 15px;
+  border-radius:9px;
+  font-weight:650;
+}
+
+.btn.secondary {
+  background:#eaf1fb;
+  color:var(--blue);
+}
+
+.btn.ghost {
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--line);
+}
+
+.btn:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.row {
+  display:flex;
+  gap:9px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.between {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.lessonlist {
+  display:grid;
+  gap:10px;
+}
+
+.lessoncard {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.lessoncard p {
+  margin:3px 0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.hidden {
+  display:none!important;
+}
+
+.view {
+  display:none;
+}
+
+.view.active {
+  display:block;
+}
+
+.back {
+  color:var(--blue);
+  background:none;
+  border:0;
+  padding:0;
+  margin-bottom:12px;
+  font-weight:700;
+}
+
+.question {
+  padding:17px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:12px;
+  margin:13px 0;
+}
+
+.option {
+  display:block;
+  width:100%;
+  text-align:left;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:10px;
+  margin:7px 0;
+}
+
+.option.selected {
+  border-color:var(--blue);
+  background:#edf4ff;
+}
+
+.option.correct {
+  border-color:var(--green);
+  background:#edfaf4;
+}
+
+.option.wrong {
+  border-color:var(--red);
+  background:#fff1f1;
+}
+
+.feedback {
+  font-weight:650;
+  margin-top:8px;
+}
+
+.word {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.word strong {
+  color:var(--navy);
+}
+
+.field {
+  width:100%;
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:white;
+}
+
+.footer {
+  text-align:center;
+  color:#94a3b8;
+  font-size:12px;
+  padding:25px;
+}
+
+.chat-shell {
+  display:grid;
+  grid-template-columns:210px 1fr;
+  gap:14px;
+  min-height:520px;
+}
+
+.bot-list {
+  display:grid;
+  gap:8px;
+  align-content:start;
+}
+
+.bot-choice {
+  padding:12px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:10px;
+  text-align:left;
+  color:var(--ink);
+}
+
+.bot-choice.active {
+  border-color:var(--blue);
+  background:var(--pale);
+  color:var(--blue);
+  font-weight:700;
+}
+
+.chat-panel {
+  display:flex;
+  flex-direction:column;
+  min-height:520px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.chat-head {
+  padding:14px 16px;
+  border-bottom:1px solid var(--line);
+}
+
+.chat-log {
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  flex:1;
+  max-height:470px;
+  overflow:auto;
+}
+
+.bubble {
+  max-width:88%;
+  padding:11px 13px;
+  border-radius:13px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.bubble.bot {
+  background:#f1f5f9;
+  align-self:flex-start;
+}
+
+.bubble.user {
+  background:#e4efff;
+  align-self:flex-end;
+}
+
+.chat-compose {
+  display:flex;
+  gap:8px;
+  padding:12px;
+  border-top:1px solid var(--line);
+}
+
+.chat-compose textarea {
+  flex:1;
+  min-height:48px;
+  max-height:120px;
+  resize:vertical;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font:inherit;
+}
+
+.chat-tools {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.chat-tools select {
+  width:auto;
+  min-width:90px;
+}
+
+.notice {
+  background:#fff8e7;
+  border:1px solid #f3dfaa;
+  padding:12px;
+  border-radius:10px;
+  color:#805b10;
+  font-size:13px;
+}
+
+.empty {
+  padding:25px;
+  text-align:center;
+  color:var(--muted);
+}
+
+@media(max-width:800px) {
+  .chat-shell {
+    grid-template-columns:1fr;
+  }
+
+  .bot-list {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .chat-panel {
+    min-height:440px;
+  }
+
+  .layout {
+    display:block;
+  }
+
+  aside {
+    display:flex;
+    overflow:auto;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+    padding:7px;
+    position:sticky;
+    top:59px;
+    z-index:4;
+  }
+
+  aside .navtitle {
+    display:none;
+  }
+
+  .navbtn {
+    white-space:nowrap;
+    width:auto;
+    margin:0;
+    padding:9px 12px;
+  }
+
+  .main {
+    padding:15px;
+  }
+
+  .stats {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .levels {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .welcome h1 {
+    font-size:21px;
+  }
+
+  .welcome .flag {
+    font-size:32px;
+  }
+
+  .grid {
+    grid-template-columns:1fr;
+  }
+
+  .top {
+    padding:11px 14px;
+  }
+
+  .pill {
+    display:none;
+  }
+}
+
+@media(max-width:420px) {
+  .lessoncard {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .lessoncard .btn {
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="brand">
+    🇫🇷 Français Plus
+    <small>APPRENDRE • PRATIQUER • PROGRESSER</small>
+  </div>
+
+  <div class="topright">
+    <span class="pill">Français – Tiếng Việt</span>
+    <span id="userLabel" class="pill">Mon espace</span>
+  </div>
+</header>
+
+<div class="layout">
+
+<aside>
+  <div class="navtitle">ESPACE D’APPRENTISSAGE</div>
+
+  <button class="navbtn active" data-view="home">🏠 Tổng quan</button>
+  <button class="navbtn" data-view="courses">📚 Khóa học A1–B2</button>
+  <button class="navbtn" data-view="practice">✍️ Luyện tập</button>
+  <button class="navbtn" data-view="vocab">🗂️ Từ vựng</button>
+  <button class="navbtn" data-view="ai">🤖 Trợ lý AI</button>
+  <button class="navbtn" data-view="progress">📈 Tiến độ</button>
+  <button class="navbtn" data-view="about">ℹ️ Hướng dẫn</button>
+</aside>
+
+<main class="main">
+
+<section id="home" class="view active">
+
+  <div class="welcome">
+    <div>
+      <span class="tag" style="background:#ffffff25;color:white">
+        BIENVENUE !
+      </span>
+
+      <h1>Bonjour et bienvenue !</h1>
+
+      <p>Học tiếng Pháp từng bước – từ A1 đến B2.</p>
+
+      <p style="margin-top:12px;font-size:13px">
+        « Chaque jour, un petit progrès. »
+        – Mỗi ngày tiến bộ một chút.
+      </p>
+    </div>
+
+    <div class="flag">🥐</div>
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <b id="statDone">0</b>
+      <span>Bài học hoàn thành</span>
+    </div>
+
+    <div class="stat">
+      <b id="statScore">—</b>
+      <span>Điểm trung bình</span>
+    </div>
+
+    <div class="stat">
+      <b id="statWords">0</b>
+      <span>Từ đã ôn</span>
+    </div>
+
+    <div class="stat">
+      <b id="statStreak">0</b>
+      <span>Ngày học liên tiếp*</span>
+    </div>
+
+  </div>
+
+  <h2>Chọn trình độ của bạn</h2>
+  <div class="levels" id="homeLevels"></div>
+
+  <h2>Tiếp tục học</h2>
+
+  <div id="continueBox" class="panel muted">
+    Chọn một trình độ để bắt đầu hành trình tiếng Pháp của bạn.
+  </div>
+
+  <p class="muted" style="font-size:11px">
+    *Thống kê ngày học được tính trên thiết bị hiện tại.
+  </p>
+
+</section>
+
+<section id="courses" class="view">
+
+  <h2>Khóa học tiếng Pháp</h2>
+
+  <p class="muted">
+    Chọn cấp độ, sau đó học theo từng unité.
+    Nội dung dưới đây là học liệu thực hành tự biên soạn,
+    tham chiếu định hướng trình độ CEFR và cấu trúc chủ đề Édito.
+  </p>
+
+  <div class="levels" id="courseLevels"></div>
+
+  <div id="courseDetail"></div>
+
+</section>
+
+<section id="lesson" class="view">
+
+  <button class="back" onclick="showView('courses')">
+    ← Quay lại khóa học
+  </button>
+
+  <div id="lessonContent"></div>
+
+</section>
+
+<section id="practice" class="view">
+
+  <h2>Ngân hàng luyện tập</h2>
+
+  <p class="muted">
+    Luyện tập nhanh theo trình độ.
+    Hệ thống chấm điểm và lưu kết quả tự động.
+  </p>
+
+  <div class="row" style="margin:12px 0">
+
+    <select id="practiceLevel" class="field" style="max-width:150px">
+      <option>A1</option>
+      <option>A2</option>
+      <option>B1</option>
+      <option>B2</option>
+    </select>
+
+    <button class="btn" onclick="startQuiz()">
+      Bắt đầu bài luyện tập
+    </button>
+
+  </div>
+
+  <div id="quizArea"></div>
+
+</section>
+
+<section id="vocab" class="view">
+
+  <h2>Kho từ vựng song ngữ</h2>
+
+  <p class="muted">
+    Nghe phát âm bằng giọng đọc tiếng Pháp có sẵn trên thiết bị.
+  </p>
+
+  <input
+    id="wordSearch"
+    class="field"
+    placeholder="Tìm từ tiếng Pháp hoặc tiếng Việt…"
+    oninput="renderWords()"
+  >
+
+  <div id="wordList" class="panel" style="margin-top:13px"></div>
+
+</section>
+
+<section id="ai" class="view">
+
+  <h2>Trợ lý AI Français Plus</h2>
+
+  <p class="muted">
+    Bốn trợ lý chuyên biệt hỗ trợ học tiếng Pháp A1–B2.
+    Cần triển khai máy chủ API trước khi trò chuyện.
+  </p>
+
+  <div class="chat-shell">
+
+    <div class="bot-list" role="group" aria-label="Chọn trợ lý">
+
+      <button class="bot-choice active" data-bot="tutor"
+        onclick="selectBot('tutor')">
+        👩‍🏫 Gia sư tiếng Pháp
+      </button>
+
+      <button class="bot-choice" data-bot="conversation"
+        onclick="selectBot('conversation')">
+        💬 Luyện hội thoại
+      </button>
+
+      <button class="bot-choice" data-bot="exam"
+        onclick="selectBot('exam')">
+        📝 Luyện thi DELF
+      </button>
+
+      <button class="bot-choice" data-bot="vocab"
+        onclick="selectBot('vocab')">
+        🗂️ Từ vựng
+      </button>
+
+      <div class="notice">
+        AI có thể mắc lỗi. Hãy đối chiếu kiến thức quan trọng
+        với giáo trình và giáo viên.
+      </div>
+
+    </div>
+
+    <div class="chat-panel">
+
+      <div class="chat-head">
+
+        <div class="between">
+
+          <div>
+            <b id="botTitle">Gia sư tiếng Pháp</b>
+
+            <div class="muted" id="botSubtitle" style="font-size:12px">
+              Giải thích ngữ pháp, sửa câu và đưa ví dụ
+            </div>
+          </div>
+
+          <button class="btn ghost" onclick="clearBotChat()">
+            Xóa chat
+          </button>
+
+        </div>
+
+        <div class="chat-tools" style="margin-top:10px">
+
+          <label for="botLevel" class="muted">Trình độ:</label>
+
+          <select id="botLevel" class="field">
+            <option>A1</option>
+            <option>A2</option>
+            <option>B1</option>
+            <option>B2</option>
+          </select>
+
+        </div>
+
+      </div>
+
+      <div id="chatLog" class="chat-log" aria-live="polite">
+
+        <div class="bubble bot">
+          Bonjour ! Chọn một trợ lý và đặt câu hỏi bằng tiếng Pháp
+          hoặc tiếng Việt nhé.
+        </div>
+
+      </div>
+
+      <form class="chat-compose" id="chatForm">
+
+        <textarea
+          id="chatInput"
+          placeholder="Nhập câu hỏi… (Enter để gửi, Shift+Enter xuống dòng)"
+          required
+          maxlength="4000"
+        ></textarea>
+
+        <button class="btn" id="chatSend" type="submit">
+          Gửi
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <p class="muted" style="font-size:12px;margin-top:12px">
+    Không nhập mật khẩu, thông tin cá nhân hoặc dữ liệu nhạy cảm
+    vào cuộc trò chuyện. Nội dung chat chỉ lưu trong phiên trình duyệt hiện tại.
+  </p>
+
+</section>
+
+<section id="progress" class="view">
+
+  <h2>Tiến độ học tập</h2>
+
+  <div id="progressContent"></div>
+
+</section>
+
+<section id="about" class="view">
+
+  <h2>Hướng dẫn sử dụng</h2>
+
+  <div class="panel">
+
+    <h3>Bắt đầu học như thế nào?</h3>
+
+    <ol>
+      <li>Vào <b>Khóa học A1–B2</b> và chọn trình độ phù hợp.</li>
+      <li>Chọn một unité, đọc mục tiêu và nội dung bài học.</li>
+      <li>Hoàn thành bài tập cuối bài để nhận điểm.</li>
+      <li>Vào mục <b>Tiến độ</b> để xem kết quả đã lưu.</li>
+    </ol>
+
+    <h3>Dữ liệu và quyền riêng tư</h3>
+
+    <p>
+      Kết quả được lưu bằng bộ nhớ cục bộ (localStorage)
+      trên trình duyệt. Chatbot gửi nội dung câu hỏi đến
+      máy chủ API đã cấu hình để tạo câu trả lời;
+      không nhập thông tin nhạy cảm.
+      Nếu xóa dữ liệu trình duyệt hoặc đổi thiết bị,
+      tiến độ có thể mất.
+    </p>
+
+    <div class="notice">
+      Đây là bản website tĩnh dùng miễn phí trên GitHub Pages.
+      Chưa có tài khoản học viên trực tuyến, lớp học giáo viên
+      hoặc đồng bộ giữa nhiều thiết bị.
+    </div>
+
+    <h3>Về nội dung</h3>
+
+    <p>
+      Website sử dụng nội dung học tập mẫu do dự án biên soạn,
+      không sao chép nguyên văn sách Édito.
+      Bạn có thể mở rộng ngân hàng bài tập và bài học
+      trong tệp <code>app.js</code>.
+    </p>
+
+  </div>
+
+</section>
+
+</main>
+</div>
+
+<div class="footer">
+  Français Plus © 2026 · Apprendre le français ensemble 🇫🇷
+</div>
+
+<!-- KẾT NỐI FILE JAVASCRIPT CHÍNH -->
+<script src="./app.js" defer></script>
+
+</body>
+</html>
